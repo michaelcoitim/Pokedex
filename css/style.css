@@ -33,17 +33,17 @@ main{
     height: 17%;
 }
 
-.pokemon_data{
+.pokemon_data {
     position: absolute;
     font-weight: 600;
     color: #aaa;
     top: 54.5%;
-    right: 20%;
-    font-size: 18%;
+    right: 28%;
+    font-size: clamp(8px, 5vw, 25px);
 }
 
-.pokemon_name{
-    color:rgb(56, 54, 54)a;
+.pokemon_name {
+    color:rgba(105, 100, 98, 0.849);
     text-transform: capitalize;
 
 
