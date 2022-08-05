@@ -1,5 +1,6 @@
 const nomePokemon = document.querySelector('.pokemon_name');
 const numeroPokemon = document.querySelector('.pokemon_number');
+const imagemPokemon = document.querySelector('.pokemon__image');
 
 
 // função pega dados da api e tranforma json
@@ -28,6 +29,8 @@ const renderPokemon = async (pokemon) => {
     //setando nome do pokemon no html
         nomePokemon.innerHTML = dados.name;
         numeroPokemon.innerHTML = dados.id;
+        imagemPokemon.src = dados['sprites']['versions']['generation-v']['black-white']
+        ['animated']['front_default'];
 }
 // teste renderizando
 renderPokemon('pichu');
