@@ -27,6 +27,7 @@ const renderPokemon = async (pokemon) => {
 
     //setando nome do pokemon no html
         nomePokemon.innerHTML = dados.name;
+        numeroPokemon.innerHTML = dados.id;
 }
 // teste renderizando
-renderPokemon('25');
+renderPokemon('pichu');
