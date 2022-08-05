@@ -8,10 +8,12 @@ const imput = document.querySelector('.pesquisar');
 // função pega dados da api e tranforma json
 const fetchPokemon = async (pokemon) => { 
         const APIResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.toLowerCase()}`);
-        // variavel pega o json da api 
-        const dados = await APIResponse.json();
-        // retona o json com as informações do pokemon 
-        return dados;
+    if(APIResponse.status===200){
+                // variavel pega o json da api 
+                const dados = await APIResponse.json();
+                // retona o json com as informações do pokemon 
+                return dados;
+    }
 
     //prita dados do objeto no console
     //  console.log(dados);
