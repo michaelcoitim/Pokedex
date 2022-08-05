@@ -6,10 +6,12 @@ const imput = document.querySelector('.pesquisar');
 const btn_prev = document.querySelector('.btn_prev');
 const btn_next = document.querySelector('.btn_next');
 
+let bunscaPokemon = 1;
+
 
 // função pega dados da api e tranforma json
 const fetchPokemon = async (pokemon) => { 
-        const APIResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.toLowerCase()}`);
+        const APIResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
     if(APIResponse.status===200){
                 // variavel pega o json da api 
                 const dados = await APIResponse.json();
@@ -37,13 +39,15 @@ const renderPokemon = async (pokemon) => {
 
     if(dados){
             //setando nome do pokemon no html
+            imagemPokemon.style.display='block';
             nomePokemon.innerHTML = dados.name;
             numeroPokemon.innerHTML = dados.id;
             imagemPokemon.src = dados['sprites']['versions']['generation-v']['black-white']
             ['animated']['front_default'];
             imput.value='';
     }else{
-        nomePokemon.innerHTML = 'não encontrado :c'
+        imagemPokemon.style.display='none';
+        nomePokemon.innerHTML = 'não encontrado :c';
         numeroPokemon.innerHTML = '';
     }
 
@@ -57,20 +61,24 @@ pesquisaPokemon.addEventListener('submit', (event) => {
 
     event.preventDefault();
 
-    renderPokemon(imput.value);
+    renderPokemon(imput.value.toLowerCase());
 });
 
 
 btn_prev.addEventListener('click', () => {
-    alert('anterior');
+    if(bunscaPokemon > 1){
+        bunscaPokemon -=1;
+        renderPokemon(bunscaPokemon);
+    }
 
 });
 
 
 btn_next.addEventListener('click', () => {
-    alert('proxiimo');
+    bunscaPokemon +=1;
+    renderPokemon(bunscaPokemon);
 
 
 });
 
-renderPokemon('1');
+renderPokemon(bunscaPokemon);
