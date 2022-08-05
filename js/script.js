@@ -30,12 +30,19 @@ const renderPokemon = async (pokemon) => {
     // chamado ''json''
     const dados = await fetchPokemon(pokemon);
 
-    //setando nome do pokemon no html
-        nomePokemon.innerHTML = dados.name;
-        numeroPokemon.innerHTML = dados.id;
-        imagemPokemon.src = dados['sprites']['versions']['generation-v']['black-white']
-        ['animated']['front_default'];
-        imput.value='';
+    if(dados){
+            //setando nome do pokemon no html
+            nomePokemon.innerHTML = dados.name;
+            numeroPokemon.innerHTML = dados.id;
+            imagemPokemon.src = dados['sprites']['versions']['generation-v']['black-white']
+            ['animated']['front_default'];
+            imput.value='';
+    }else{
+        nomePokemon.innerHTML = 'não encontrado :c'
+        numeroPokemon.innerHTML = '';
+    }
+
+
 }
 // teste renderizando
 //renderPokemon('3');
