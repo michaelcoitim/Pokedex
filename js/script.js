@@ -45,6 +45,7 @@ const renderPokemon = async (pokemon) => {
             imagemPokemon.src = dados['sprites']['versions']['generation-v']['black-white']
             ['animated']['front_default'];
             imput.value='';
+            bunscaPokemon = dados.id;
     }else{
         imagemPokemon.style.display='none';
         nomePokemon.innerHTML = 'não encontrado :c';
