@@ -11,8 +11,10 @@ const fetchPokemon = async (pokemon) => {
         return dados;
 
     //prita dados do objeto no console
-  //  console.log(dados);
+    //  console.log(dados);
 }
+
+
 // teste chamado função consumindo api
 //fetchPokemon('25');
 
