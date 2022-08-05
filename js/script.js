@@ -3,6 +3,8 @@ const numeroPokemon = document.querySelector('.pokemon_number');
 const imagemPokemon = document.querySelector('.pokemon__image');
 const pesquisaPokemon = document.querySelector('.forme_pequisa');
 const imput = document.querySelector('.pesquisar');
+const btn_prev = document.querySelector('.btn_prev');
+const btn_next = document.querySelector('.btn_next');
 
 
 // função pega dados da api e tranforma json
@@ -27,6 +29,9 @@ const fetchPokemon = async (pokemon) => {
 
 // função renderiza (desenha o pokemon)
 const renderPokemon = async (pokemon) => {
+    nomePokemon.innerHTML ='Buscando...';
+    numeroPokemon.innerHTML = '';
+
     // chamado ''json''
     const dados = await fetchPokemon(pokemon);
 
@@ -54,3 +59,18 @@ pesquisaPokemon.addEventListener('submit', (event) => {
 
     renderPokemon(imput.value);
 });
+
+
+btn_prev.addEventListener('click', () => {
+    alert('anterior');
+
+});
+
+
+btn_next.addEventListener('click', () => {
+    alert('proxiimo');
+
+
+});
+
+renderPokemon('1');
