@@ -1,11 +1,13 @@
 const nomePokemon = document.querySelector('.pokemon_name');
 const numeroPokemon = document.querySelector('.pokemon_number');
 const imagemPokemon = document.querySelector('.pokemon__image');
+const pesquisaPokemon = document.querySelector('.forme_pequisa');
+const imput = document.querySelector('.pesquisar');
 
 
 // função pega dados da api e tranforma json
 const fetchPokemon = async (pokemon) => { 
-        const APIResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
+        const APIResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.toLowerCase()}`);
         // variavel pega o json da api 
         const dados = await APIResponse.json();
         // retona o json com as informações do pokemon 
@@ -31,6 +33,15 @@ const renderPokemon = async (pokemon) => {
         numeroPokemon.innerHTML = dados.id;
         imagemPokemon.src = dados['sprites']['versions']['generation-v']['black-white']
         ['animated']['front_default'];
+        imput.value='';
 }
 // teste renderizando
-renderPokemon('pichu');
+//renderPokemon('3');
+
+// função pesquisa pokemon
+pesquisaPokemon.addEventListener('submit', (event) => {
+
+    event.preventDefault();
+
+    renderPokemon(imput.value);
+});
